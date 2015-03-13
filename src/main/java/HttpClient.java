@@ -7,9 +7,9 @@ import java.io.IOException;
 /**
  * Created by stefanlundberg on 15-03-11.
  */
-public class HttpGet {
+public class HttpClient {
 
-    public String getAsString(String url) throws IOException {
+    public String getContentAsString(String url) throws IOException {
         return Request.Get(url).execute().returnContent().asString();
     }
 

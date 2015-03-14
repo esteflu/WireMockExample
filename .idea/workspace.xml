@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8807a028-a08a-4590-af1b-5b8c2662f6e2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/StubbedServerTest.java" afterPath="$PROJECT_DIR$/src/test/java/StubbedServerTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/MANIFEST.MF" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="5681e360-6eba-4815-b96a-6d1127298768" name="New changelist" comment="" />
@@ -44,8 +44,8 @@
       <file leaf-file-name="StubbedServerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/StubbedServerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4848485" vertical-offset="75" max-vertical-offset="1065">
-              <caret line="21" column="63" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.3030303" vertical-offset="75" max-vertical-offset="1065">
+              <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#672#673#0" expanded="true" />
@@ -670,11 +670,17 @@
       <option name="project" value="LOCAL" />
       <updated>1426354235791</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Refactored, single responsibility for each test.">
+      <created>1426355225037</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1426355225037</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14638000" />
+    <option name="totallyTimeSpent" value="14874000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -749,7 +755,8 @@
     <MESSAGE value="Added xml" />
     <MESSAGE value="Refactored." />
     <MESSAGE value="Added target" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added target" />
+    <MESSAGE value="Refactored, single responsibility for each test." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored, single responsibility for each test." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1084,8 +1091,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/StubbedServerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4848485" vertical-offset="75" max-vertical-offset="1065">
-          <caret line="21" column="63" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.3030303" vertical-offset="75" max-vertical-offset="1065">
+          <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#672#673#0" expanded="true" />

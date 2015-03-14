@@ -10,12 +10,12 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class StubedServerTest {
+public class StubbedServerTest {
 
     @Rule
     public WireMockRule wireMockRule = new WireMockRule(8080);
 
-    private HttpClient client = new HttpClient();
+    private HttpClient client;
 
     private static String PATH = "/content";
 
@@ -23,6 +23,7 @@ public class StubedServerTest {
 
     @Before
     public void setup() {
+        client = new HttpClient(new HttpResult());
         createSimpleServer(200, "some content", "text/plain");
     }
 

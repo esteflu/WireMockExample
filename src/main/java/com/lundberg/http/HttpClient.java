@@ -2,11 +2,8 @@ package com.lundberg.http;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.apache.http.client.fluent.Response;
 
-import javax.inject.Inject;
 import java.io.IOException;
 
 /**
@@ -15,19 +12,27 @@ import java.io.IOException;
 
 public class HttpClient {
 
-    private HttpResult httpResult = new HttpResult(); //TODO add DI with JSR330
+    private HttpResult result;
+
+    public HttpClient(HttpResult result) {
+        this.result = result;
+    }
 
     public String getContentAsString(String url) throws IOException {
-        return Request.Get(url).execute().returnContent().asString();
+        return doExecute(url).returnContent().asString();
     }
 
     public HttpResponse getHttpResponse(String url) throws IOException {
-        return Request.Get(url).execute().returnResponse();
+        return doExecute(url).returnResponse();
+    }
+
+    private Response doExecute(String url) throws IOException {
+        return Request.Get(url).execute();
     }
 
     public HttpResult getHttpResult(String url) throws IOException {
-        int statusCode = Request.Get(url).execute().returnResponse().getStatusLine().getStatusCode();
-        httpResult.checkStatusCode(statusCode);
-        return httpResult;
+        int statusCode = this.getHttpResponse(url).getStatusLine().getStatusCode();
+        result.checkStatusCode(statusCode);
+        return result;
     }
 }

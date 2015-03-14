@@ -24,26 +24,34 @@ public class StubbedServerTest {
     @Before
     public void setup() {
         client = new HttpClient(new HttpResult());
-        createSimpleServer(200, "some content", "text/plain");
     }
 
     @Test
-    public void get_content_as_string_when_get() throws Exception {
+    public void check_body_content_when_get() throws Exception {
+        createSimpleServer(200, "some content", "text/plain");
         String actual = client.getContentAsString((URL));
         assertThat(actual, is("some content"));
     }
 
     @Test
-    public void get_http_response_when_get() throws Exception {
+    public void check_content_type_when_get() throws Exception {
+        createSimpleServer(200, "some content", "text/plain");
         HttpResponse actual = client.getHttpResponse(URL);
-        assertThat(actual.getStatusLine().getStatusCode(), is(200));
         assertThat(actual.getEntity().getContentType().getValue(), is("text/plain"));
     }
 
     @Test
-    public void check_http_status_when_get() throws  Exception {
+    public void check_http_status_when_get_OK() throws  Exception {
+        createSimpleServer(200, "some content", "text/plain");
         HttpResult result = client.getHttpResult(URL);
         assertTrue(result.isSuccessful());
+    }
+
+    @Test
+    public void check_http_status_when_get_BAD_REQUEST() throws Exception {
+        createSimpleServer(400, "some content", "text/plain");
+        HttpResult result = client.getHttpResult(URL);
+        assertFalse(result.isSuccessful());
     }
 
     private void createSimpleServer(int statusCode, String body, String contentType) {
@@ -51,7 +59,7 @@ public class StubbedServerTest {
                 .willReturn(aResponse()
                         .withStatus(statusCode)
                         .withHeader("Content-Type", contentType)
-                        .withBody(body)));
+                        .   withBody(body)));
     }
 
 

@@ -1,6 +1,7 @@
 package com.lundberg.http;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 
@@ -34,5 +35,9 @@ public class HttpClient {
         int statusCode = this.getHttpResponse(url).getStatusLine().getStatusCode();
         result.checkStatusCode(statusCode);
         return result;
+    }
+
+    public Content getContent(String url) throws IOException {
+        return doExecute(url).returnContent();
     }
 }

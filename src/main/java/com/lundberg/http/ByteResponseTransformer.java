@@ -14,12 +14,17 @@ public class ByteResponseTransformer extends ResponseTransformer {
     public ResponseDefinition transform(Request request, ResponseDefinition responseDefinition, FileSource fileSource) {
         return new ResponseDefinitionBuilder().like(responseDefinition)
                 .but()
-                .withBody(request.getBodyAsString().getBytes())
+                .withBody(responseDefinition.getBody().replace("some content", "other content"))
                 .build();
     }
 
     @Override
     public String name() {
         return "byteResponseTransformer";
+    }
+
+    @Override
+    public boolean applyGlobally() {
+        return false;
     }
 }

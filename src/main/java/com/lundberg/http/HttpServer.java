@@ -1,5 +1,6 @@
 package com.lundberg.http;
 
+import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.http.Fault;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
@@ -10,9 +11,14 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 public class HttpServer {
 
     private static String PATH = "/content";
+    private WireMockServer mock;
+
+    public HttpServer(WireMockServer mock) {
+        this.mock = mock;
+    }
 
     public void createServer(int statusCode, String body, String contentType) {
-        givenThat(get(urlEqualTo(PATH))
+        mock.givenThat(get(urlEqualTo(PATH))
                 .willReturn(aResponse()
                         .withStatus(statusCode)
                         .withHeader("Content-Type", contentType)
@@ -20,7 +26,7 @@ public class HttpServer {
     }
 
     public void createServerWithFaultResponse(String body, String contentType) {
-        givenThat(get(urlEqualTo(PATH))
+        mock.givenThat(get(urlEqualTo(PATH))
                 .willReturn(aResponse()
                         .withFault(Fault.EMPTY_RESPONSE)
                         .withHeader("Content-Type", contentType)
@@ -28,9 +34,18 @@ public class HttpServer {
     }
 
     public void createServerWithResponseTransformer(String body) {
-        givenThat(get(urlEqualTo(PATH))
+
+        mock.givenThat(get(urlEqualTo(PATH))
                 .willReturn(aResponse()
                         .withBody(body)
                         .withTransformers("byteResponseTransformer")));
+    }
+
+    public void startServer() {
+        mock.start();
+    }
+
+    public void stopServer() {
+        mock.stop();
     }
 }

@@ -1,9 +1,9 @@
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
-import com.lundberg.http.ByteResponseTransformer;
 import com.lundberg.http.HttpClient;
 import com.lundberg.http.HttpResult;
 import com.lundberg.http.HttpServer;
+import com.lundberg.http.ResponseTransformerImpl;
 import org.apache.http.HttpResponse;
 import org.apache.http.NoHttpResponseException;
 import org.apache.http.client.fluent.Content;
@@ -30,7 +30,7 @@ public class StubbedServerTest {
     @Before
     public void setup() { //TODO Make prettier!!!
         //server = new HttpServer(new WireMockServer(new WireMockConfiguration().port(8080)));
-        server = new HttpServer(new WireMockServer(new WireMockConfiguration().port(8080).extensions(new ByteResponseTransformer())));
+        server = new HttpServer(new WireMockServer(new WireMockConfiguration().port(8080).extensions(new ResponseTransformerImpl())));
         server.startServer();
         client = new HttpClient(new HttpResult());
     }
@@ -78,7 +78,7 @@ public class StubbedServerTest {
     @Test
     public void transform_body_content_to_other_content() throws IOException {
         server.createServerWithResponseTransformer(CONTENT);
-        Content content = client.getContent(URL);
-        assertEquals(CONTENT, content);
+        Content other = client.getContent(URL);
+        assertNotEquals(CONTENT, other);
     }
 }

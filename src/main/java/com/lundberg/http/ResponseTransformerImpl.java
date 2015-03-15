@@ -9,7 +9,7 @@ import com.github.tomakehurst.wiremock.http.ResponseDefinition;
 /**
  * Created by stefanlundberg on 15-03-15.
  */
-public class ByteResponseTransformer extends ResponseTransformer {
+public class ResponseTransformerImpl extends ResponseTransformer {
     @Override
     public ResponseDefinition transform(Request request, ResponseDefinition responseDefinition, FileSource fileSource) {
         return new ResponseDefinitionBuilder().like(responseDefinition)
@@ -20,7 +20,7 @@ public class ByteResponseTransformer extends ResponseTransformer {
 
     @Override
     public String name() {
-        return "byteResponseTransformer";
+        return "responseTransformerImpl";
     }
 
     @Override

@@ -34,11 +34,10 @@ public class HttpServer {
     }
 
     public void createServerWithResponseTransformer(String body) {
-
         mock.givenThat(get(urlEqualTo(PATH))
                 .willReturn(aResponse()
                         .withBody(body)
-                        .withTransformers("byteResponseTransformer")));
+                        .withTransformers("responseTransformerImpl")));
     }
 
     public void startServer() {

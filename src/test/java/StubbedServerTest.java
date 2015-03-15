@@ -61,6 +61,8 @@ public class StubbedServerTest {
         assertFalse(result.isSuccessful());
     }
 
+    //TODO create test for response transformer, register the class on wiremock server
+
     private void createSimpleServer(int statusCode) {
         new HttpServer().createServer(statusCode, CONTENT, CONTENT_TYPE);
     }

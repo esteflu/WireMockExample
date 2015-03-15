@@ -26,4 +26,11 @@ public class HttpServer {
                         .withHeader("Content-Type", contentType)
                         .withBody(body)));
     }
+
+    public void createServerWithResponseTransformer(String body) {
+        givenThat(get(urlEqualTo(PATH))
+                .willReturn(aResponse()
+                        .withBody(body)
+                        .withTransformers("byteResponseTransformer")));
+    }
 }

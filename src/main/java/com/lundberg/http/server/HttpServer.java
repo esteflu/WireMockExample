@@ -1,4 +1,4 @@
-package com.lundberg.http;
+package com.lundberg.http.server;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.http.Fault;

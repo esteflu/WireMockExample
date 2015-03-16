@@ -1,5 +1,6 @@
-package com.lundberg.http;
+package com.lundberg.http.client;
 
+import com.lundberg.http.HttpResult;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;

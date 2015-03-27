@@ -16,7 +16,7 @@ public abstract class Server {
         this.type = type;
     }
 
-    public abstract void setServerType(int statusCode, String body, String contentType);
+    public abstract void configure(int statusCode, String body, String contentType);
 
     public WireMockServer getMock() {
         return mock;
@@ -32,5 +32,9 @@ public abstract class Server {
 
     public void stopServer() {
         mock.stop();
+    }
+
+    public boolean isServerStarted() {
+        return mock.isRunning();
     }
 }

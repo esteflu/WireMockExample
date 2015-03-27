@@ -1,8 +1,8 @@
-package com.lundberg.http.server;
+package com.lundberg.http.server.type;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
-import com.lundberg.http.ResponseTransformerImpl;
+import com.lundberg.http.server.Server;
+import com.lundberg.http.server.ServerType;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
@@ -14,11 +14,10 @@ public class ResponseTransformerServer extends Server {
 
     public ResponseTransformerServer(WireMockServer mock) {
         super(mock, ServerType.TRANSFORMER);
-        WireMockConfiguration extensions = new WireMockConfiguration().extensions(new ResponseTransformerImpl());
     }
 
     @Override
-    public void setServerType(int statusCode, String body, String contentType) {
+    public void configure(int statusCode, String body, String contentType) {
         getMock().givenThat(get(urlEqualTo(PATH))
                 .willReturn(aResponse()
                         .withBody(body)

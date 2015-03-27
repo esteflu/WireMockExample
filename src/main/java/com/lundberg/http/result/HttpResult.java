@@ -1,4 +1,4 @@
-package com.lundberg.http;
+package com.lundberg.http.result;
 
 /**
  * Created by stefanlundberg on 15-03-14.

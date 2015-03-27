@@ -12,10 +12,7 @@ import com.lundberg.http.server.type.SimpleServer;
 public class ServerFactory {
 
     public static Server build(ServerType type, WireMockConfiguration configuration) {
-        Server server = null;
-
         switch (type) {
-
             case SIMPLE:
                 return new SimpleServer(new WireMockServer());
             case FAULTY:

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8807a028-a08a-4590-af1b-5b8c2662f6e2" name="Default" comment="Major refactoring.">
+    <list default="true" id="8807a028-a08a-4590-af1b-5b8c2662f6e2" name="Default" comment="cleanup">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/lundberg/http/server/ServerFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/lundberg/http/server/ServerFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -28,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MockedServerTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MockedServerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/MockedServerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="91" column="98" selection-start-line="91" selection-start-column="98" selection-end-line="91" selection-end-column="98" />
+            <state vertical-scroll-proportion="0.7012195">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1208#1209#0" expanded="true" />
@@ -132,11 +132,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServerFactory.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ServerFactory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lundberg/http/server/ServerFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45731708">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -204,7 +204,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lundberg/http/server/CommonServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lundberg/http/server/Server.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lundberg/http/server/ResponseTransformerServer.java" />
-        <option value="$PROJECT_DIR$/src/test/java/MockedServerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lundberg/http/result/HttpResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lundberg/http/transformer/ResponseTransformerImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lundberg/http/server/type/SimpleServer.java" />
@@ -212,6 +211,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/lundberg/http/server/type/FaultResponseServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lundberg/http/server/type/FaultyResponseServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/lundberg/http/server/ServerFactory.java" />
+        <option value="$PROJECT_DIR$/src/test/java/MockedServerTest.java" />
       </list>
     </option>
   </component>
@@ -880,7 +880,7 @@
       <workItem from="1426449396111" duration="3365000" />
       <workItem from="1426530376236" duration="6107000" />
       <workItem from="1426702658622" duration="21000" />
-      <workItem from="1427479529789" duration="3056000" />
+      <workItem from="1427479529789" duration="3150000" />
     </task>
     <task id="LOCAL-00001" summary="Added gitignore">
       <created>1426106275316</created>
@@ -990,11 +990,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427482301059</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="cleanup">
+      <created>1427482602949</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1427482602949</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35675000" />
+    <option name="totallyTimeSpent" value="35769000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1106,7 +1112,8 @@
     <MESSAGE value="Started major refactoring." />
     <MESSAGE value="Deleted no longer used class." />
     <MESSAGE value="Major refactoring." />
-    <option name="LAST_COMMIT_MESSAGE" value="Major refactoring." />
+    <MESSAGE value="cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleanup" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1547,18 +1554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/MockedServerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="98" selection-start-line="91" selection-start-column="98" selection-end-line="91" selection-end-column="98" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1208#1209#0" expanded="true" />
-            <element signature="e#1243#1244#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lundberg/http/server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1587,10 +1582,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lundberg/http/server/ServerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45731708">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/MockedServerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7012195">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1208#1209#0" expanded="true" />
+            <element signature="e#1243#1244#0" expanded="true" />
           </folding>
         </state>
       </provider>

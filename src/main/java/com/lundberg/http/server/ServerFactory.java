@@ -9,7 +9,10 @@ import com.lundberg.http.server.type.SimpleServer;
 /**
  * Created by stefanlundberg on 15-03-16.
  */
-public class ServerFactory {
+public final class ServerFactory {
+
+    private ServerFactory() {
+    }
 
     public static Server build(ServerType type, WireMockConfiguration configuration) {
         switch (type) {

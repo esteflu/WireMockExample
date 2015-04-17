@@ -1,10 +1,12 @@
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.lundberg.http.client.HttpClient;
+import com.lundberg.http.config.MyWireMockConfiguration;
 import com.lundberg.http.result.HttpResult;
 import com.lundberg.http.server.Server;
 import com.lundberg.http.server.ServerFactory;
 import com.lundberg.http.server.ServerType;
-import com.lundberg.http.transformer.ResponseTransformerImpl;
+import com.lundberg.http.transformer.ResponseBodyDecider;
+import com.lundberg.http.transformer.ResponseBodyReplacer;
 import org.apache.http.HttpResponse;
 import org.apache.http.NoHttpResponseException;
 import org.apache.http.client.fluent.Content;
@@ -83,10 +85,16 @@ public class MockedServerTest {
 
     @Test
     public void transform_body_content_to_other_content() throws IOException {
-        setUpServer(200, TRANSFORMER, new WireMockConfiguration().extensions(new ResponseTransformerImpl()));
+        setUpServer(200, TRANSFORMER, new MyWireMockConfiguration("responseBodyReplacer").extensions(new ResponseBodyReplacer()));
 
         Content otherContent = client.getContent(URL);
         assertNotEquals(CONTENT, otherContent);
+    }
+
+    @Test
+    public void transform_body_content_depending_on_request_headers() throws IOException {
+        setUpServer(200, TRANSFORMER, new MyWireMockConfiguration("responseBodyDecider").extensions(new ResponseBodyDecider()));
+        //TODO complete test
     }
 
     private void setUpServer(int statusCode, ServerType type, WireMockConfiguration extendedConfig) {

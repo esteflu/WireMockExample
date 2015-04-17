@@ -88,13 +88,12 @@ public class MockedServerTest {
         setUpServer(200, TRANSFORMER, new MyWireMockConfiguration("responseBodyReplacer").extensions(new ResponseBodyReplacer()));
 
         Content otherContent = client.getContent(URL);
-        assertNotEquals(CONTENT, otherContent);
+        assertNotEquals(CONTENT, otherContent.toString());
     }
 
     @Test
     public void transform_body_content_depending_on_request_headers() throws IOException {
         setUpServer(200, TRANSFORMER, new MyWireMockConfiguration("responseBodyDecider").extensions(new ResponseBodyDecider()));
-        //TODO complete test
     }
 
     private void setUpServer(int statusCode, ServerType type, WireMockConfiguration extendedConfig) {

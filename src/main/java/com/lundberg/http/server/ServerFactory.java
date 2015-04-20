@@ -16,14 +16,14 @@ public final class ServerFactory {
     }
 
     public static Server build(ServerType type, WireMockConfiguration configuration) {
-        ((MyWireMockConfiguration) configuration).getTransformerName();
         switch (type) {
             case SIMPLE:
                 return new SimpleServer(new WireMockServer());
             case FAULTY:
                 return new FaultyResponseServer(new WireMockServer());
             case TRANSFORMER:
-                return new ResponseTransformerServer(new WireMockServer(configuration), ((MyWireMockConfiguration) configuration).getTransformerName());
+                return new ResponseTransformerServer(new WireMockServer(configuration),
+                        ((MyWireMockConfiguration) configuration).getTransformerName());
             default:
                 throw new IllegalArgumentException("Unknown server type:" + type);
         }

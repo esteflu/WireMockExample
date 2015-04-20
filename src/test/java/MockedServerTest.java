@@ -92,11 +92,12 @@ public class MockedServerTest {
         setUpServer(200, TRANSFORMER, new MyWireMockConfiguration("responseBodyReplacer").extensions(ResponseBodyReplacer.class));
 
         Content otherContent = client.getContent(URL);
-        assertNotEquals(CONTENT, otherContent);
+        assertNotEquals(CONTENT, otherContent.toString());
     }
 
     @Test
     public void transform_body_content_depending_on_request_headers() throws IOException {
+<<<<<<< HEAD
         setContentType("not text/plain type");
         setUpServer(200, TRANSFORMER, new MyWireMockConfiguration("responseBodyDecider").extensions(ResponseBodyDecider.class));
         String actual = client.getContentAsString(URL);
@@ -117,6 +118,9 @@ public class MockedServerTest {
 
     public void setContent(String content) {
         this.content = content;
+=======
+        setUpServer(200, TRANSFORMER, new MyWireMockConfiguration("responseBodyDecider").extensions(new ResponseBodyDecider()));
+>>>>>>> 579514683fc42e81ee7a5d37ae06d8f7ce080c5a
     }
 
     private void setUpServer(int statusCode, ServerType type, WireMockConfiguration extendedConfig) {

@@ -28,6 +28,8 @@ public class MockedServerTest {
     private static String PATH = "/content";
     private static String URL = "http://localhost:8080" + PATH;
 
+    private String contentType;
+    private String content;
     private HttpClient client = null;
     private Server server;
 
@@ -35,6 +37,8 @@ public class MockedServerTest {
     public void setup() {
         client = new HttpClient(new HttpResult());
         server = null;
+        setContent(CONTENT);
+        setContentType(CONTENT_TYPE);
     }
 
     @After
@@ -85,7 +89,7 @@ public class MockedServerTest {
 
     @Test
     public void transform_body_content_to_other_content() throws IOException {
-        setUpServer(200, TRANSFORMER, new MyWireMockConfiguration("responseBodyReplacer").extensions(new ResponseBodyReplacer()));
+        setUpServer(200, TRANSFORMER, new MyWireMockConfiguration("responseBodyReplacer").extensions(ResponseBodyReplacer.class));
 
         Content otherContent = client.getContent(URL);
         assertNotEquals(CONTENT, otherContent);
@@ -93,13 +97,33 @@ public class MockedServerTest {
 
     @Test
     public void transform_body_content_depending_on_request_headers() throws IOException {
-        setUpServer(200, TRANSFORMER, new MyWireMockConfiguration("responseBodyDecider").extensions(new ResponseBodyDecider()));
-        //TODO complete test
+        setContentType("not text/plain type");
+        setUpServer(200, TRANSFORMER, new MyWireMockConfiguration("responseBodyDecider").extensions(ResponseBodyDecider.class));
+        String actual = client.getContentAsString(URL);
+        assertEquals("body for other content type", actual);
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     private void setUpServer(int statusCode, ServerType type, WireMockConfiguration extendedConfig) {
         server = ServerFactory.build(type, extendedConfig);
-        server.configure(statusCode, CONTENT, CONTENT_TYPE);
+        server.configure(statusCode, getContent(), getContentType());
         server.startServer();
     }
+
+
 }
